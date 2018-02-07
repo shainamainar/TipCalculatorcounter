@@ -16,8 +16,7 @@
         android:ems="5"
         android:hint="@string/amount_name"
         android:id="@+id/amountInput"
-        android:inputType="numberDecimal"
-        />
+        android:inputType="numberDecimal" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,8 +25,7 @@
         android:ems="5"
         android:hint="@string/amt_people"
         android:inputType="numberDecimal"
-        android:id="@+id/numPeople"
-        />
+        android:id="@+id/numPeople" />
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,8 +46,5 @@
             android:text="@string/twenty_per"
             android:onClick="twentyClicked"/>
     </RadioGroup>
-
-
-
 
 </LinearLayout>
