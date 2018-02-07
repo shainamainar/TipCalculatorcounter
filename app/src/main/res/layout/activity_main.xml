@@ -45,6 +45,19 @@
             android:layout_height="wrap_content"
             android:text="@string/twenty_per"
             android:onClick="twentyClicked"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other_per"
+            android:onClick="otherClicked"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:inputType="numberDecimal"
+            android:id="@+id/otherPer"/>
     </RadioGroup>
+
+
 
 </LinearLayout>
