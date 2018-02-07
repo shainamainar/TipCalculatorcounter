@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TipCalculator-counter</string>
     <string name="amount_name">Amount</string>
+    <string name="amt_people"># of people</string>
+    <string name="fifteen_per">15%</string>
+    <string name="eighteen_per">18%</string>
+    <string name="twenty_per">20%</string>
 </resources>
