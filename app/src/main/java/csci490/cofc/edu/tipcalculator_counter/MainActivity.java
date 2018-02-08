@@ -3,54 +3,68 @@ package csci490.cofc.edu.tipcalculator_counter;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     //instantiations
-    private EditText amountInput, numPeople, otherPer;
+    private EditText inputTotal, inputPeople, inputOther;
     private RadioGroup tipGroup;
     private RadioButton fifteenClicked, eighteenClicked, twentyClicked, otherCliked;
-    private Button calculateButton;
-    private TextView tipAmt, totalAmt, perPerson, finalTip, finalTotal, finalPerPerson;
+    private Button calculateButton, resetButton;
+    private TextView finalTip, finalTotal, finalPerPerson;
+    private double total, tipVal;
+    private int numPeople;
+    private boolean totSub = false, peopSub = false, otherSub = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final DecimalFormat dollars = new DecimalFormat("#.00");
-        //initialize variables
-        amountInput = findViewById(R.id.amountInput);
-        numPeople = findViewById(R.id.amountInput);
-        otherPer = findViewById(R.id.otherPer);
+        inputTotal = findViewById(R.id.input_total);
+        inputPeople = findViewById(R.id.input_people);
+        inputOther = findViewById(R.id.input_other);
         tipGroup = findViewById(R.id.tipGroup);
-        fifteenClicked = findViewById(R.id.fifteenClicked);
-        eighteenClicked = findViewById(R.id.eighteenClicked);
-        twentyClicked = findViewById(R.id.twentyClicked);
-        otherCliked = findViewById(R.id.otherClicked);
         calculateButton = findViewById(R.id.calculateButton);
-        tipAmt = findViewById(R.id.tipAmt);
-        totalAmt = findViewById(R.id.totalAmt);
-        perPerson = findViewById(R.id.perPerson);
+        resetButton = findViewById(R.id.resetButton);
         finalTip = findViewById(R.id.finalTip);
         finalTotal = findViewById(R.id.finalTotal);
         finalPerPerson = findViewById(R.id.finalPerPerson);
 
-        fifteenClicked.setChecked(true);
-    }
-    public void onClick(View v){
-        amountInput.setText(null);
-        numPeople.setText(null);
+        inputTotal.setOnKeyListener(keyListener);
+        inputPeople.setOnKeyListener(keyListener);
+        inputOther.setOnKeyListener(keyListener);
+
+        calculateButton.setOnClickListener(clickListener);
+        resetButton.setOnClickListener(clickListener);
 
     }
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.calculateButton:
+                    if (!totSub || !peopSub){
+                        Toast.makeText(getApplicationContext(), R.string.invalid_input, Toast.LENGTH_SHORT );
+                    }
+                    else if(inputOther.getVisibility() == View.VISIBLE && !otherSub){
+                        Toast.makeText(getApplicationContext(), R.string.other_invalid, Toast.LENGTH_SHORT);
+                    }
+                    else{
+                        if(tipVal <= 0 || total < 1 || numPeople < 1){
 
-
-
+                        }
+                    }
+            }
+        }
+    }
 }

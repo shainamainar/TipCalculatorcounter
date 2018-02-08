@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TipCalculator-counter</string>
     <string name="amount_name">Amount</string>
+    <string name="amt_text">Enter Total Bill Amount:</string>
     <string name="amt_people"># of people</string>
     <string name="fifteen_per">15%</string>
     <string name="eighteen_per">18%</string>
@@ -11,4 +12,6 @@
     <string name="total">TOTAL: </string>
     <string name="per_person">PER PERSON: </string>
     <string name="reset_button">RESET</string>
+    <string name="invalid_input">INVALID INPUT</string>
+    <string name="other_invalid">Must enter valid amount</string>
 </resources>
