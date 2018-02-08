@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/text_margin"
         android:layout_gravity="center_horizontal"
         android:ems="5"
         android:hint="@string/amt_people"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/text_margin"
         android:orientation="horizontal"
         android:id="@+id/tipGroup">
         <RadioButton
@@ -63,14 +63,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/button_margin"
         android:layout_gravity="center_horizontal"
         android:text="@string/calculate_button"
         android:id="@+id/calculateButton"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/button_margin"
         android:orientation="horizontal"
         android:layout_gravity="center">
         <TextView
@@ -81,7 +81,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="@dimen/button_margin"
             android:id="@+id/finalTip" />
         <TextView
             android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/button_margin"
             android:id="@+id/finalTotal"/>
         <TextView
             android:layout_width="wrap_content"
@@ -104,5 +104,11 @@
             android:id="@+id/finalPerPerson"/>
 
     </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_margin"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/reset_button"/>
 
 </LinearLayout>

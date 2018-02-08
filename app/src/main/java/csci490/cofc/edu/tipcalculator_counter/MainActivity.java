@@ -14,21 +14,11 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     //instantiations
-    private EditText amountInput;
-    private EditText numPeople;
-    private EditText otherPer;
+    private EditText amountInput, numPeople, otherPer;
     private RadioGroup tipGroup;
-    private RadioButton fifteenClicked;
-    private RadioButton eighteenClicked;
-    private RadioButton twentyClicked;
-    private RadioButton otherCliked;
+    private RadioButton fifteenClicked, eighteenClicked, twentyClicked, otherCliked;
     private Button calculateButton;
-    private TextView tipAmt;
-    private TextView totalAmt;
-    private TextView perPerson;
-    private TextView finalTip;
-    private TextView finalTotal;
-    private TextView finalPerPerson;
+    private TextView tipAmt, totalAmt, perPerson, finalTip, finalTotal, finalPerPerson;
 
 
     @Override
@@ -43,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         tipGroup = findViewById(R.id.tipGroup);
         fifteenClicked = findViewById(R.id.fifteenClicked);
         eighteenClicked = findViewById(R.id.eighteenClicked);
-        twentyClicked = findViewById((R.id.twentyClicked);
+        twentyClicked = findViewById(R.id.twentyClicked);
         otherCliked = findViewById(R.id.otherClicked);
         calculateButton = findViewById(R.id.calculateButton);
         tipAmt = findViewById(R.id.tipAmt);
@@ -54,8 +44,13 @@ public class MainActivity extends AppCompatActivity {
         finalPerPerson = findViewById(R.id.finalPerPerson);
 
         fifteenClicked.setChecked(true);
+    }
+    public void onClick(View v){
+        amountInput.setText(null);
+        numPeople.setText(null);
 
     }
+
 
 
 }

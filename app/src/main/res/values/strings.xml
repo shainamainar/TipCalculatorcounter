@@ -6,8 +6,9 @@
     <string name="eighteen_per">18%</string>
     <string name="twenty_per">20%</string>
     <string name="other_per">Other</string>
-    <string name="calculate_button">Calculate</string>
+    <string name="calculate_button">CALCULATE</string>
     <string name="tip">TIP: </string>
     <string name="total">TOTAL: </string>
     <string name="per_person">PER PERSON: </string>
+    <string name="reset_button">RESET</string>
 </resources>
