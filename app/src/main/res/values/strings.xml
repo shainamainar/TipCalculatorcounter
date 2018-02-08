@@ -14,4 +14,7 @@
     <string name="reset_button">RESET</string>
     <string name="invalid_input">INVALID INPUT</string>
     <string name="other_invalid">Must enter valid amount</string>
+    <string name="invalid_tip">Invalid tip. Enter more than 1%.</string>
+    <string name="invalid_total">Total must be more than $1.</string>
+    <string name="invalid_people">Number of people must be more than 1.</string>
 </resources>
