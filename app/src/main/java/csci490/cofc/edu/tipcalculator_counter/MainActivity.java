@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putString("finalTip", String.valueOf(finalTip.getText()));
         savedInstanceState.putString("finalTotal", String.valueOf(finalTotal.getText()));
         savedInstanceState.putString("finalPerPerson", String.valueOf(finalPerPerson.getText()));
-
     }
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState){
@@ -69,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
             finalPerPerson.setText(savedInstanceState.getString("finalPerPerson"));
         }
     }
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
         calculateButton.setOnClickListener(clickListener);
         resetButton.setOnClickListener(clickListener);
-
-
 
     }
     private void showErrorAlert(String errorMessage, final int fieldId) {
@@ -155,24 +148,37 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-    private View.OnKeyListener keyListener;
-
-    {
+    private View.OnKeyListener keyListener;{
         keyListener = new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 switch (view.getId()) {
                     case R.id.input_total:
-                        total = Double.valueOf(inputTotal.getText().toString());
-                        totSub = true;
+                        if(inputTotal.getText().toString().length()>0){
+                            totSub = true;
+                            total = Double.parseDouble(inputTotal.getText().toString());
+                        }
+                        if(totSub && peopSub && otherSub){
+                            calculateButton.setEnabled(true);
+                        }
                         break;
                     case R.id.input_people:
-                        numPeople = Integer.valueOf(inputPeople.getText().toString());
-                        peopSub = true;
+                        if(inputPeople.getText().toString().length()>0){
+                            peopSub = true;
+                            numPeople = Integer.parseInt(inputPeople.getText().toString());
+                        }
+                        if(totSub && peopSub && otherSub){
+                            calculateButton.setEnabled(true);
+                        }
                         break;
                     case R.id.input_other:
-                        tipPer = Double.valueOf(inputOther.getText().toString());
-                        otherSub = true;
+                        if(inputOther.getText().toString().length()>0){
+                            otherSub = true;
+                            tipPer = Double.parseDouble(inputOther.getText().toString());
+                        }
+                        if(totSub && peopSub && otherSub){
+                            calculateButton.setEnabled(true);
+                        }
                         break;
                 }
                 return false;
