@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     //instantiations
     private EditText inputTotal, inputPeople, inputOther;
     private RadioGroup tipGroup;
-    private RadioButton fifteenClicked, eighteenClicked, twentyClicked, otherCliked;
+    //private RadioButton fifteenClicked, eighteenClicked, twentyClicked, otherClicked;
     private Button calculateButton, resetButton;
     private TextView finalTip, finalTotal, finalPerPerson;
     private double total;
@@ -30,21 +30,62 @@ public class MainActivity extends AppCompatActivity {
     private double totalPerPerson;
     private int numPeople;
     private boolean totSub = false, peopSub = false, otherSub = false;
+    final DecimalFormat dollar = new DecimalFormat("#.00");
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putDouble("total", total);
+        savedInstanceState.putDouble("tipPer", tipPer);
+        savedInstanceState.putDouble("tipVal", tipVal);
+        savedInstanceState.putDouble("allTotal", allTotal);
+        savedInstanceState.putDouble("totalPerPerson", totalPerPerson);
+        savedInstanceState.putInt("numPeople", numPeople);
+        savedInstanceState.putString("inputTotal", String.valueOf(inputTotal));
+        savedInstanceState.putString("inputPeople", String.valueOf(inputPeople));
+        savedInstanceState.putString("inputOther", String.valueOf(inputOther));
+        savedInstanceState.putInt("tipGroup", tipGroup.getCheckedRadioButtonId());
+        savedInstanceState.putString("finalTip", String.valueOf(finalTip.getText()));
+        savedInstanceState.putString("finalTotal", String.valueOf(finalTotal.getText()));
+        savedInstanceState.putString("finalPerPerson", String.valueOf(finalPerPerson.getText()));
+
+    }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+        if (savedInstanceState!=null){
+            super.onRestoreInstanceState(savedInstanceState);
+            numPeople = savedInstanceState.getInt("numPeople");
+            total = savedInstanceState.getDouble("total");
+            tipPer = savedInstanceState.getDouble("tipPer");
+            tipVal = savedInstanceState.getDouble("tipVal");
+            allTotal = savedInstanceState.getDouble("allTotal");
+            totalPerPerson = savedInstanceState.getDouble("totalPerPerson");
+            inputTotal.setText(savedInstanceState.getString("inputTotal"));
+            inputPeople.setText(savedInstanceState.getString("inputPeople"));
+            inputOther.setText(savedInstanceState.getString("inputOther"));
+            tipGroup.check(savedInstanceState.getInt("tipGroup"));
+            finalTip.setText(savedInstanceState.getString("finalTip"));
+            finalTotal.setText(savedInstanceState.getString("finalTotal"));
+            finalPerPerson.setText(savedInstanceState.getString("finalPerPerson"));
+        }
+    }
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        inputTotal = findViewById(R.id.input_total);
-        inputPeople = findViewById(R.id.input_people);
-        inputOther = findViewById(R.id.input_other);
-        tipGroup = findViewById(R.id.tipGroup);
-        calculateButton = findViewById(R.id.calculateButton);
-        resetButton = findViewById(R.id.resetButton);
-        finalTip = findViewById(R.id.finalTip);
-        finalTotal = findViewById(R.id.finalTotal);
-        finalPerPerson = findViewById(R.id.finalPerPerson);
+        inputTotal = this.findViewById(R.id.input_total);
+        inputPeople = this.findViewById(R.id.input_people);
+        inputOther = this.findViewById(R.id.input_other);
+        tipGroup = this.findViewById(R.id.tipGroup);
+        calculateButton = this.findViewById(R.id.calculateButton);
+        resetButton = this.findViewById(R.id.resetButton);
+        finalTip = this.findViewById(R.id.finalTip);
+        finalTotal = this.findViewById(R.id.finalTotal);
+        finalPerPerson = this.findViewById(R.id.finalPerPerson);
 
         inputTotal.setOnKeyListener(keyListener);
         inputPeople.setOnKeyListener(keyListener);
@@ -52,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
         calculateButton.setOnClickListener(clickListener);
         resetButton.setOnClickListener(clickListener);
+
+
 
     }
     private void showErrorAlert(String errorMessage, final int fieldId) {
@@ -87,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
                                 tipVal = tipPer * total;
                                 allTotal = total + tipVal;
                                 totalPerPerson = allTotal / numPeople;
-                                DecimalFormat dollar = new DecimalFormat("0.00");
                                 finalTip.setText(String.valueOf(dollar.format(tipVal)));
                                 finalPerPerson.setText(String.valueOf(dollar.format(totalPerPerson)));
                                 finalTotal.setText(String.valueOf(dollar.format(allTotal)));
@@ -113,26 +155,30 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-    private View.OnKeyListener keyListener = new View.OnKeyListener() {
-        @Override
-        public boolean onKey(View view, int i, KeyEvent keyEvent) {
-            switch (view.getId()){
-                case R.id.input_total:
-                    total = Double.valueOf(inputTotal.getText().toString());
-                    totSub = true;
-                    break;
-                case R.id.input_people:
-                    numPeople = Integer.valueOf(inputPeople.getText().toString());
-                    peopSub = true;
-                    break;
-                case R.id.input_other:
-                    tipPer = Double.valueOf(inputOther.getText().toString());
-                    otherSub = true;
-                    break;
+    private View.OnKeyListener keyListener;
+
+    {
+        keyListener = new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                switch (view.getId()) {
+                    case R.id.input_total:
+                        total = Double.valueOf(inputTotal.getText().toString());
+                        totSub = true;
+                        break;
+                    case R.id.input_people:
+                        numPeople = Integer.valueOf(inputPeople.getText().toString());
+                        peopSub = true;
+                        break;
+                    case R.id.input_other:
+                        tipPer = Double.valueOf(inputOther.getText().toString());
+                        otherSub = true;
+                        break;
+                }
+                return false;
             }
-            return false;
-        }
-    };
+        };
+    }
 
     public void onRadioButtonClicked(View view){
         boolean isClicked = ((RadioButton) view).isChecked();
@@ -166,13 +212,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
-    }
-    public void onSaveInstanceState(Bundle savedInstanceState){
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putDouble("total", total);
-        savedInstanceState.putDouble("tipPer", tipPer);
-        savedInstanceState.putDouble("tipVal", tipVal);
-        savedInstanceState.putDouble();
     }
 }
 
