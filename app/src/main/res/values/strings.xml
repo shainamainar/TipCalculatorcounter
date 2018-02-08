@@ -1,20 +1,21 @@
 <resources>
     <string name="app_name">TipCalculator-counter</string>
     <string name="amount_name">Amount</string>
-    <string name="amt_text">Enter Total Bill Amount:</string>
+    <string name="amt_text">Enter total bill amount:</string>
     <string name="amt_people"># of people</string>
     <string name="fifteen_per">15%</string>
     <string name="eighteen_per">18%</string>
     <string name="twenty_per">20%</string>
     <string name="other_per">Other</string>
     <string name="calculate_button">CALCULATE</string>
-    <string name="tip">TIP: </string>
-    <string name="total">TOTAL: </string>
-    <string name="per_person">PER PERSON: </string>
+    <string name="tip">TIP: $</string>
+    <string name="total">TOTAL: $</string>
+    <string name="per_person">PER PERSON: $</string>
     <string name="reset_button">RESET</string>
     <string name="invalid_input">INVALID INPUT</string>
     <string name="other_invalid">Must enter valid amount</string>
     <string name="invalid_tip">Invalid tip. Enter more than 1%.</string>
     <string name="invalid_total">Total must be more than $1.</string>
     <string name="invalid_people">Number of people must be more than 1.</string>
+    <string name="people_text">"Enter number of people splitting check:</string>
 </resources>

@@ -86,7 +86,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/button_margin"
         android:orientation="horizontal"
         android:layout_gravity="center">
         <TextView
@@ -133,9 +132,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/button_margin"
-            android:layout_marginRight="@dimen/text_margin"
             android:layout_gravity="center_horizontal"
             android:text="@string/calculate_button"
+            android:layout_marginRight="@dimen/text_margin"
             android:background="@drawable/roundedbuttons"
             android:backgroundTint="@color/calculateColor"
             android:id="@+id/calculateButton"/>
@@ -149,5 +148,6 @@
             android:text="@string/reset_button"
             android:id="@+id/resetButton"/>
     </LinearLayout>
+
 
 </LinearLayout>

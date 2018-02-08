@@ -35,33 +35,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putDouble("total", total);
-        savedInstanceState.putDouble("tipPer", tipPer);
-        savedInstanceState.putDouble("tipVal", tipVal);
-        savedInstanceState.putDouble("allTotal", allTotal);
-        savedInstanceState.putDouble("totalPerPerson", totalPerPerson);
-        savedInstanceState.putInt("numPeople", numPeople);
-        savedInstanceState.putString("inputTotal", String.valueOf(inputTotal));
-        savedInstanceState.putString("inputPeople", String.valueOf(inputPeople));
-        savedInstanceState.putString("inputOther", String.valueOf(inputOther));
+        savedInstanceState.putString("inputTotal", inputTotal.getText().toString());
+        savedInstanceState.putString("inputPeople", inputPeople.getText().toString());
+        savedInstanceState.putString("inputOther", inputOther.getText().toString());
         savedInstanceState.putInt("tipGroup", tipGroup.getCheckedRadioButtonId());
         savedInstanceState.putString("finalTip", String.valueOf(finalTip.getText()));
         savedInstanceState.putString("finalTotal", String.valueOf(finalTotal.getText()));
         savedInstanceState.putString("finalPerPerson", String.valueOf(finalPerPerson.getText()));
+        savedInstanceState.putBoolean("totSub", totSub);
+        savedInstanceState.putBoolean("peopSub", peopSub);
+        savedInstanceState.putBoolean("otherSub", otherSub);
+        savedInstanceState.putBoolean("calculateButton", calculateButton.isEnabled());
     }
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState){
         if (savedInstanceState!=null){
             super.onRestoreInstanceState(savedInstanceState);
-            numPeople = savedInstanceState.getInt("numPeople");
-            total = savedInstanceState.getDouble("total");
-            tipPer = savedInstanceState.getDouble("tipPer");
-            tipVal = savedInstanceState.getDouble("tipVal");
-            allTotal = savedInstanceState.getDouble("allTotal");
-            totalPerPerson = savedInstanceState.getDouble("totalPerPerson");
-            inputTotal.setText(savedInstanceState.getString("inputTotal"));
-            inputPeople.setText(savedInstanceState.getString("inputPeople"));
-            inputOther.setText(savedInstanceState.getString("inputOther"));
+            inputTotal.setText(savedInstanceState.getString("inputTotal"), TextView.BufferType.NORMAL);
+            inputPeople.setText(savedInstanceState.getString("inputPeople"), TextView.BufferType.NORMAL);
+            inputOther.setText(savedInstanceState.getString("inputOther"), TextView.BufferType.NORMAL);
+            calculateButton.setEnabled(savedInstanceState.getBoolean("calculateButton"));
             tipGroup.check(savedInstanceState.getInt("tipGroup"));
             finalTip.setText(savedInstanceState.getString("finalTip"));
             finalTotal.setText(savedInstanceState.getString("finalTotal"));
@@ -174,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.input_other:
                         if(inputOther.getText().toString().length()>0){
                             otherSub = true;
-                            tipPer = Double.parseDouble(inputOther.getText().toString());
+                            tipPer = Double.parseDouble(inputOther.getText().toString()) / 100;
                         }
                         if(totSub && peopSub && otherSub){
                             calculateButton.setEnabled(true);
