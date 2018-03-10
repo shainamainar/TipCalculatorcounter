@@ -1,4 +1,5 @@
 # README
+(see screenshots file)
 Practice with saving states and destroying. More layout and resources. User input. 
 ## Certification of Authenticity
 I certify that this is my own work. Pledged 2/6/2018 Shaina Mae Mainar
